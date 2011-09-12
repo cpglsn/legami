@@ -15,7 +15,7 @@ class BusinessUser : public User
 		BusinessUser( Legami*, string, string, Profilo*, vector<Contatto*>*, vector<Gruppo*>* );
 		virtual ~BusinessUser();
 
-		virtual vector<User*> find(Profilo*) const;
+		virtual vector<User*>* find(Profilo*) const;
 };
 
 #endif
