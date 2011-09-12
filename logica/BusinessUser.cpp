@@ -1,17 +1,17 @@
 #include "BusinessUser.h"
 
 
-const int unsigned BusinessAccount::max_risultati = 10;
+const int unsigned BusinessUser::risultatiMax = 10;
 
 
 BusinessUser::BusinessUser( Legami* l, string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g)
-	: User( l, n, pass, p, c, g) { User::ruolo("business");}
+	: User( l, n, pass, p, c, g), User::ruolo("business") {}
 
 
 BusinessUser::~BusinessUser() {}
 
 
-vector<User*>* BusinessAccount::find(Profilo* p) const
+vector<User*>* BusinessUser::find(Profilo* p) const
 {
 	vector<User*>* match = gestore->find(p);
 
