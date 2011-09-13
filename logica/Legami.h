@@ -1,3 +1,8 @@
+/*
+	questa classe gestisce tutte le possibili azioni
+	che si possono svolgere all'interno del database
+*/
+
 #ifndef LEGAMI_H
 #define LEGAMI_H
 
@@ -6,21 +11,20 @@
 #include "User.h"
 #include "Profilo.h"
 
-
 using std::vector;
 using std::string;
-
 
 class Legami
 {
 	private:
-		vector<User*>* utenti; // il database
+		// il database
+		vector<User*>* utenti;
 
 	public:
 		Legami(string*);
 
 		// gestione utenti
-		bool registra( const User&);
+		bool registra(const User&);
 		bool login(const User&);
 		bool cambiaRuolo(User*);
 

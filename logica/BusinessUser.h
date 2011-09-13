@@ -1,3 +1,9 @@
+/*
+	questa classe è l'evoluzione della classe User, che
+	consente ad ogni BusinessUser di fare ricerche con
+	un massimo di 300 risultati per ogni ricerca
+*/
+
 #ifndef BUSINESSUSER_H
 #define BUSINESSUSER_H
 
@@ -12,9 +18,10 @@ class BusinessUser : public User
 		static const unsigned int risultatiMax;
 
 	public:
-		BusinessUser( string, string, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
+		BusinessUser(string, string, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
 		virtual ~BusinessUser();
 
+		// trova i profili con le caratteristiche del profilo cercato
 		virtual vector<User*>* find(Profilo*) const;
 };
 

@@ -1,3 +1,10 @@
+/*
+	questa classe gestisce il login (nick e pass) insieme alla
+	lista dei contatti dello user e alla lista dei gruppi cui
+	appartiene, oltre al ruolo che lo user ha (base, business o
+	executive)
+*/
+
 #ifndef USER_H
 #define USER_H
 
@@ -18,22 +25,28 @@ class User
 	friend class Legami;
 
 	private:
-		string nick, password; // nick prende il posto di username e identifica univocamente ogni user
+		// nick prende il posto di username e identifica univocamente ogni user
+		string nick, password;
 
 	protected:
 		Profilo* profilo;
-		vector<Contatto*>* collegamenti; // insieme dei contatti di User
-		vector<Gruppo*>* gruppi; // l'insieme dei gruppi dello User
-		string ruolo; // ruolo dell'utente (base, business, executive)
+		// insieme dei contatti di User
+		vector<Contatto*>* collegamenti;
+		// l'insieme dei gruppi dello User
+		vector<Gruppo*>* gruppi;
+		// ruolo dell'utente (base, business, executive)
+		string ruolo;
 
 	public:
-		User( string, string, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
+		User(string, string, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
 		virtual ~User();
 
-		string getRuolo() const;
-
 		bool operator==(const User&);
+
 		string getNick() const;
+
+		// ritorna il ruolo dello user (base, business o executive)
+		string getRuolo() const;
 
 		// gestione collegamenti aggiungi Contatto senza negoziazione (come Twitter)
 		bool insertContatto(Contatto*);

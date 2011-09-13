@@ -1,3 +1,7 @@
+/*
+	questa classe gestisce i dati personali dello user
+*/
+
 #ifndef PROFILO_H
 #define PROFILO_H
 
@@ -12,11 +16,11 @@ class Profilo
 		int anno_nascita, mese_nascita, giorno_nascita;
 
 	public:
-		Profilo( string, string, string, string, string, string, int=0, int=0, int=0);
+		Profilo(string, string, string, string, string, string, int=0, int=0, int=0);
 
 		bool operator==(const Profilo&);
-/*
-		string getNome() const;
+
+/*		string getNome() const;
 		string getCognome() const;
 		int getAnnoNascita() const;
 		int getMeseNascita() const;

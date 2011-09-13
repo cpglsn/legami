@@ -1,7 +1,7 @@
 #include "Contatto.h"
 
 
-Contatto::Contatto( User* u, string t)
+Contatto::Contatto(User* u, string t)
 	: user(u), tag(t) {}
 
 

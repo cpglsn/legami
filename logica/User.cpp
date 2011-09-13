@@ -1,6 +1,7 @@
 #include "User.h"
 
-User::User( string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g )
+
+User::User(string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g)
 	: nick(n), password(pass), profilo(p), collegamenti(c), gruppi(g), ruolo("base") {}
 
 
@@ -29,18 +30,21 @@ bool User::insertContatto(Contatto* c)
 {
 	if(c)
 	{
-		if(collegamenti == 0) // se collegamenti = 0 alloco il vettore collegamenti e aggiungo il contatto
+		// se collegamenti = 0 alloco il vettore collegamenti e aggiungo il contatto
+		if(collegamenti == 0)
 		{
 			collegamenti = new vector<Contatto*>;
 			collegamenti->push_back(c);
 			return true;
 		}
 
-		else // se il vettore esiste, controllo che il contatto non sia gia presente
+		// se il vettore esiste, controllo che il contatto non sia gia presente
+		else
 		{
 			for(unsigned int i=0; i<collegamenti->size(); ++i)
 			{
-				if( *(*collegamenti)[i] == *c ) // se esiste esco con false
+				// se esiste esco con false
+				if(*(*collegamenti)[i] == *c)
 					return false;
 			}
 
@@ -56,11 +60,11 @@ bool User::insertContatto(Contatto* c)
 
 bool User::eraseContatto(Contatto* c)
 {
-	if( collegamenti && c )
+	if(collegamenti && c)
 	{
 		for(unsigned int i=0; i<collegamenti->size(); ++i)
 		{
-			if( *(*collegamenti)[i] == *c )
+			if(*(*collegamenti)[i] == *c)
 			{
 				delete (*collegamenti)[i];
 				collegamenti->erase(collegamenti->begin() + i);

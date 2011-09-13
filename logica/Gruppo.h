@@ -1,3 +1,9 @@
+/*
+	questa classe definisce i gruppi che hanno un nome, una
+	descrizione e una lista di user iscritti, quando un gruppo
+	è vuoto (nemmeno uno user) viene cancellato automaticamente 
+*/
+
 #ifndef GRUPPO_H
 #define GRUPPO_H
 
@@ -17,18 +23,23 @@ class Gruppo
 		vector<User*>* membri;
 
 	public:
-		Gruppo( string, string, vector<User*>*);
+		Gruppo(string, string, vector<User*>*);
 		virtual ~Gruppo();
+
+		bool operator==(const Gruppo&);
 
 		string getNome() const;
 		string getDescrizione() const;
 		vector<User*>* getMembri() const;
 
-		bool appartiene( User*) const;
-		void aggiungi( User*);
-		void cancella( User*);
+		// controlla se uno user appartiene al gruppo
+		bool appartiene(User*) const;
 
-		bool operator==(const Gruppo&);
+		// aggiunge uno user al gruppo
+		void aggiungi(User*);
+
+		// cancella uno user dal gruppo
+		void cancella(User*);
 };
 
 #endif
