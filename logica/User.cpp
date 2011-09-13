@@ -1,7 +1,7 @@
 #include "User.h"
 
-User::User( Legami* l, string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g )
-	: gestore(l), nick(n), password(pass), profilo(p), collegamenti(c), gruppi(g), ruolo("base") {}
+User::User( string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g )
+	: nick(n), password(pass), profilo(p), collegamenti(c), gruppi(g), ruolo("base") {}
 
 
 User::~User() {}
@@ -22,12 +22,6 @@ bool User::operator==(const User& u)
 string User::getNick() const
 {
 	return nick;
-}
-
-
-void User::setGestore(Legami* g)
-{
-	gestore = g;
 }
 
 

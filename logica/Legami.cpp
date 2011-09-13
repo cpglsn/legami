@@ -1,25 +1,45 @@
 #include "Legami.h"
 
+
 Legami::Legami(string* nomeFile) {}
 
 
-bool Legami::registra( string n, string p)
+bool Legami::registra( const User& u)
 {
-	// se il nick esiste gia ritorno false
-	for(unsigned int i=0; i<utenti->size(); ++i)
+	if( utenti)
 	{
-		if((*utenti)[i] == n)
-			return false;
+		// se il nick esiste gia ritorno false
+		for(unsigned int i=0; i<utenti->size(); ++i)
+		{
+			if( *(*utenti)[i] == u );
+				return false;
+		}
 	}
 
-	// costruisco da zero l'account e lo aggiungo al database
-	if(!utenti)
+	else // costruisco da zero l'account e lo aggiungo al database
+	{
 		utenti = new vector<User*>;
+	}
 
-	// costruisco un utente senza profilo, gruppi e collegamenti, li aggiungerà dopo la registrazione
-	User* u=new User( n, p, 0, 0, 0);
+	// costruisco un utente senza profilo e lo aggiungo alla lista
+	utenti->push_back(new User(u));
 
-	utenti->push_back(u);
-	        
 	return true;
 }
+
+
+bool Legami::login(const User& u)
+{
+	if(utenti)
+	{
+		// se il nick esiste controllo la password
+		for(unsigned int i=0; i<utenti->size(); ++i)
+		{
+			if( *(*utenti)[i] == u )
+				return true;
+		}
+	}
+
+	return false; // se non c'è un db o il for esce senza return
+}
+
