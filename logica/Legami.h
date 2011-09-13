@@ -3,23 +3,27 @@
 
 #include <vector>
 #include <string>
-#include "account.h"
-#include "username.h"
 
 using std::vector;
 using std::string;
 
-// classe di gestione 
+class User;
+class Profilo;
+
+
 class Legami
 {
 	private:
-		vector<Account*>* utenti; // il database di Account
+		vector<User*>* utenti; // il database
+
 	public:
 		Legami(string*);
-		Account* login(Username*);
+
 		// gestione utenti
-		bool iscriviUtente(Username*);
-		bool upgradeUtente(Username*);
+		bool registra( User*);
+		bool login(string, string);
+		bool cambiaRuolo(User*);
+
 		// funzionalita` del gestore ad esempio, trova la lista degli User che hanno qualche caratteristica nel profilo
 		vector<User*> find(Profilo*);
 };

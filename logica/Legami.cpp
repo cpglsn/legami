@@ -1,16 +1,20 @@
-#include "legami.h"
+#include "Legami.h"
 
 
 
-	private:
-		vector<Account*>* utenti; // il database di Account
-	public:
-		Legami(string*);
-		Account* login(Username*);
+		vector<User*>* utenti; // il database
+
+
+Legami::Legami(string* nomeFile)
+{
+	
+
+		User* login(string, string);
+
 		// gestione utenti
-		bool iscriviUtente(Username*);
-		bool upgradeUtente(Username*);
+		bool iscriviUtente(User*);
+		bool upgradeUtente(User*);
+
 		// funzionalita` del gestore ad esempio, trova la lista degli User che hanno qualche caratteristica nel profilo
 		vector<User*> find(Profilo*);
 };
-
