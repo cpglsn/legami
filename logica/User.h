@@ -28,6 +28,8 @@ class User
 		// nick prende il posto di username e identifica univocamente ogni user
 		string nick, password;
 
+		Legami* gestore;
+
 	protected:
 		Profilo* profilo;
 		// insieme dei contatti di User
@@ -44,13 +46,16 @@ class User
 		bool operator==(const User&);
 
 		string getNick() const;
-
-		// ritorna il ruolo dello user (base, business o executive)
 		string getRuolo() const;
 
 		// gestione collegamenti aggiungi Contatto senza negoziazione (come Twitter)
 		bool insertContatto(Contatto*);
 		bool eraseContatto(Contatto*);
+
+		void setGestore(Legami*);
+
+		// trova i profili con le caratteristiche del profilo cercato
+		virtual vector<User*>* find(Profilo*) const;
 };
 
 #endif

@@ -2,7 +2,7 @@
 
 
 User::User(string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g)
-	: nick(n), password(pass), profilo(p), collegamenti(c), gruppi(g), ruolo("base") {}
+	: nick(n), password(pass), profilo(p), collegamenti(c), gruppi(g), ruolo("base"), gestore(0) {}
 
 
 User::~User() {}
@@ -75,5 +75,38 @@ bool User::eraseContatto(Contatto* c)
 
 	// se esco dall'if, o il for non ritorna niente, il contatto non è stato cancellato
 	return false;
+}
+
+
+void User::setGestore(Legami* l)
+{
+	gesotre=l;
+}
+
+
+vector<User*>* User::find(Profilo* p) const
+{
+	p->setAnnoNascita(0);
+	p->setMeseNascita(0);
+	p->setGiornoNascita(0);
+	p->setLavPrec("");
+	p->setLavAtt("");
+	p->setTelefono("");
+	p->setMail("");
+
+	vector<User*>* match = gestore->find(p);
+
+	// rimuovo l'user corrente dalla lista
+	for(unsigned int i=0; i<match->size(); ++i)
+	{
+		if(*(*match)[i] == *this)
+			match->erase(match->begin() + i);
+	}
+
+	if(match->size() > risultatiMax)
+		// cancella i risultati in più
+		match->erase(match->begin() + risultatiMax, match->end());
+
+	return match;
 }
 
