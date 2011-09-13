@@ -15,7 +15,13 @@ string User::getRuolo() const
 
 bool User::operator==(const User& u)
 {
-	return nick == u.nick;
+	return (nick == u.nick && password == u.password);
+}
+
+
+string User::getNick() const
+{
+	return nick;
 }
 
 

@@ -16,7 +16,7 @@ class Legami;
 class User
 {
 	private:
-		string nick, password; // prende il posto di username e identifica univocamente ogni user
+		string nick, password; // nick prende il posto di username e identifica univocamente ogni user
 
 	protected:
 		Legami* gestore; // il gestore Legami di this
@@ -32,6 +32,7 @@ class User
 		string getRuolo() const;
 
 		bool operator==(const User&);
+		string getNick() const;
 
 		void setGestore(Legami*);
 		// gestione collegamenti aggiungi Contatto senza negoziazione (come Twitter)

@@ -1,20 +1,25 @@
 #include "Legami.h"
 
+Legami::Legami(string* nomeFile) {}
 
 
-		vector<User*>* utenti; // il database
-
-
-Legami::Legami(string* nomeFile)
+bool Legami::registra( string n, string p)
 {
-	
+	// se il nick esiste gia ritorno false
+	for(unsigned int i=0; i<utenti->size(); ++i)
+	{
+		if((*utenti)[i] == n)
+			return false;
+	}
 
-		User* login(string, string);
+	// costruisco da zero l'account e lo aggiungo al database
+	if(!utenti)
+		utenti = new vector<User*>;
 
-		// gestione utenti
-		bool iscriviUtente(User*);
-		bool upgradeUtente(User*);
+	// costruisco un utente senza profilo, gruppi e collegamenti, li aggiungerà dopo la registrazione
+	User* u=new User( n, p, 0, 0, 0);
 
-		// funzionalita` del gestore ad esempio, trova la lista degli User che hanno qualche caratteristica nel profilo
-		vector<User*> find(Profilo*);
-};
+	utenti->push_back(u);
+	        
+	return true;
+}

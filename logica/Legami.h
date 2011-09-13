@@ -20,7 +20,7 @@ class Legami
 		Legami(string*);
 
 		// gestione utenti
-		bool registra( User*);
+		bool registra( string, string);
 		bool login(string, string);
 		bool cambiaRuolo(User*);
 

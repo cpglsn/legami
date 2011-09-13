@@ -29,7 +29,7 @@ bool Gruppo::appartiene( User* user) const
 	{
 		for( unsigned int i=0; i<membri->size(); ++i)
 		{
-			if( *((*membri)[i]) == *user )
+			if( (*membri)[i]->getNick() == user->getNick() )
 				return true;
 		}
 	}
@@ -64,7 +64,7 @@ void Gruppo::cancella( User* user)
 	{
 		for( unsigned int i=0; i<membri->size(); ++i)
 		{
-			if( *((*membri)[i]) == *user )
+			if( (*membri)[i]->getNick() == user->getNick() )
 				// chiamo il distruttore di User, non esegue la distruzione profonda
 				membri->erase( membri->begin() + i);
 		}

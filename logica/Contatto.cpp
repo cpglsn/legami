@@ -7,8 +7,7 @@ Contatto::Contatto( User* u, string t)
 
 bool Contatto::operator==(const Contatto& c)
 {
-	// utilizza l'operatore == ridefinito nella classe User
-	return *user == *c.user;
+	return user->getNick() == c.user->getNick();
 }
 
 
