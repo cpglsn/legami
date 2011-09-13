@@ -12,8 +12,10 @@ class Profilo
 		int anno_nascita, mese_nascita, giorno_nascita;
 
 	public:
-		Profilo( string, string, int, int, int, string, string, string, string);
+		Profilo( string, string, string, string, string, string, int=0, int=0, int=0);
 
+		bool operator==(const Profilo&);
+/*
 		string getNome() const;
 		string getCognome() const;
 		int getAnnoNascita() const;
@@ -23,7 +25,7 @@ class Profilo
 		string getLavAtt() const;
 		string getTelefono() const;
 		string getMail() const;
-
+*/
 		void setNome(string);
 		void setCognome(string);
 		void setAnnoNascita(int);

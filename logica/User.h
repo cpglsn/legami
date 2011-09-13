@@ -15,6 +15,8 @@ class Legami;
 
 class User
 {
+	friend class Legami;
+
 	private:
 		string nick, password; // nick prende il posto di username e identifica univocamente ogni user
 

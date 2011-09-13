@@ -43,3 +43,20 @@ bool Legami::login(const User& u)
 	return false; // se non c'è un db o il for esce senza return
 }
 
+
+vector<User*> Legami::find(Profilo* p) const
+{
+	vector<User*> v;
+
+	if( p && utenti)
+	{
+		for(unsigned int i=0; i<utenti->size(); ++i)
+		{
+			if( *((*(*utenti)[i]).profilo) == *p )
+				v.push_back((*utenti)[i]);
+		}
+	}
+
+	return v;
+}
+
