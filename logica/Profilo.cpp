@@ -5,7 +5,7 @@ Profilo::Profilo( string n, string c, string t, string ma, string lp, string la,
 	: nome(n), cognome(c), telefono(t), mail(ma), lavoro_precedente(lp), lavoro_attuale(la), anno_nascita(a), mese_nascita(m), giorno_nascita(g) {}
 
 
-bool Profilo::operator==(const Profilo& p)
+bool Profilo::operator==(const Profilo& p) // se il campo esiste controlla che sia uguale
 {
 	if( p.nome=="" || nome==p.nome )
 		if( p.cognome=="" || cognome==p.cognome )

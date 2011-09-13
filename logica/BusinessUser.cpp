@@ -4,8 +4,8 @@
 const int unsigned BusinessUser::risultatiMax = 10;
 
 
-BusinessUser::BusinessUser( Legami* l, string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g)
-	: User( l, n, pass, p, c, g), User::ruolo("business") {}
+BusinessUser::BusinessUser( string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g)
+	: User( n, pass), User::ruolo("business") {}
 
 
 BusinessUser::~BusinessUser() {}

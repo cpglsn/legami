@@ -12,7 +12,7 @@ class BusinessUser : public User
 		static const unsigned int risultatiMax;
 
 	public:
-		BusinessUser( Legami*, string, string, Profilo*, vector<Contatto*>*, vector<Gruppo*>* );
+		BusinessUser( string, string, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
 		virtual ~BusinessUser();
 
 		virtual vector<User*>* find(Profilo*) const;
