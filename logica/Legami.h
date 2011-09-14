@@ -18,18 +18,16 @@ class Legami
 {
 	private:
 		// il database
-		vector<User*>* utenti;
+		vector<User*>* database;
+		User* utente;
 
 	public:
-		Legami(string*);
+		Legami(string *, );
 
 		// gestione utenti
 		bool registra(const User&);
 		bool login(const User&);
 		bool cambiaRuolo(User*);
-
-		// funzionalita` del gestore ad esempio, trova la lista degli User che hanno qualche caratteristica nel profilo
-		vector<User*> find(Profilo*) const;
 };
 
 #endif

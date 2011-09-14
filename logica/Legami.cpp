@@ -1,7 +1,7 @@
 #include "Legami.h"
 
 
-Legami::Legami(string* nomeFile) {}
+Legami::Legami(string* database, User* ) {}
 
 
 bool Legami::registra(const User& u)
@@ -44,22 +44,5 @@ bool Legami::login(const User& u)
 
 	// se non c'è un db o il for esce senza return
 	return false;
-}
-
-
-vector<User*> Legami::find(Profilo* p) const
-{
-	vector<User*> v;
-
-	if(p && utenti)
-	{
-		for(unsigned int i=0; i<utenti->size(); ++i)
-		{
-			if(*((*(*utenti)[i]).profilo) == *p)
-				v.push_back((*utenti)[i]);
-		}
-	}
-
-	return v;
 }
 

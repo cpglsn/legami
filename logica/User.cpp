@@ -83,30 +83,3 @@ void User::setGestore(Legami* l)
 	gesotre=l;
 }
 
-
-vector<User*>* User::find(Profilo* p) const
-{
-	p->setAnnoNascita(0);
-	p->setMeseNascita(0);
-	p->setGiornoNascita(0);
-	p->setLavPrec("");
-	p->setLavAtt("");
-	p->setTelefono("");
-	p->setMail("");
-
-	vector<User*>* match = gestore->find(p);
-
-	// rimuovo l'user corrente dalla lista
-	for(unsigned int i=0; i<match->size(); ++i)
-	{
-		if(*(*match)[i] == *this)
-			match->erase(match->begin() + i);
-	}
-
-	if(match->size() > risultatiMax)
-		// cancella i risultati in più
-		match->erase(match->begin() + risultatiMax, match->end());
-
-	return match;
-}
-

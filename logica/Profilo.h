@@ -18,8 +18,6 @@ class Profilo
 	public:
 		Profilo(string, string, string, string, string, string, int=0, int=0, int=0);
 
-		bool operator==(const Profilo&);
-
 /*		string getNome() const;
 		string getCognome() const;
 		int getAnnoNascita() const;

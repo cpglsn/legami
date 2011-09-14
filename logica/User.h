@@ -53,9 +53,6 @@ class User
 		bool eraseContatto(Contatto*);
 
 		void setGestore(Legami*);
-
-		// trova i profili con le caratteristiche del profilo cercato
-		virtual vector<User*>* find(Profilo*) const;
 };
 
 #endif
