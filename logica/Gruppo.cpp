@@ -2,8 +2,16 @@
 
 
 Gruppo::Gruppo(string n, string d, vector<User*>* m)
-	: nome(n), descrizione(d), membri(m) {}
+	: nome(n)
+    , descrizione(d)
+    , membri(m)
+{
+}
 
+Gruppo::~Gruppo()
+{
+
+}
 
 bool Gruppo::operator ==(const Gruppo& g)
 {

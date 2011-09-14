@@ -28,6 +28,7 @@ class Legami
 		bool registra(const User&);
 		bool login(const User&);
 		bool cambiaRuolo(User*);
+
 };
 
 #endif

@@ -1,14 +1,27 @@
 #include "User.h"
+#include "Profilo.h"
+#include "Gruppo.h"
+#include "Contatto.h"
+#include "Legami.h"
 
 
-User::User(string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g)
-	: nick(n), password(pass), profilo(p), collegamenti(c), gruppi(g), ruolo("base"), gestore(0) {}
+User::User(string n, string pass, Ruoli ruolo,Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g)
+	: nick(n)
+    , password(pass)
+    , ruolo(ruolo)
+    , profilo(p)
+    , collegamenti(c)
+    , gruppi(g)
+    , gestore(0)
+{
+
+}
 
 
 User::~User() {}
 
 
-string User::getRuolo() const
+User::Ruoli User::getRuolo() const
 {
 	return ruolo;
 }
@@ -82,4 +95,3 @@ void User::setGestore(Legami* l)
 {
 	gestore=l;
 }
-

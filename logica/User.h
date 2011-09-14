@@ -22,37 +22,40 @@ class Legami;
 
 class User
 {
-	friend class Legami;
-
-	private:
-		// nick prende il posto di username e identifica univocamente ogni user
-		string nick, password;
-
-		Legami* gestore;
-
-	protected:
-		Profilo* profilo;
-		// insieme dei contatti di User
-		vector<Contatto*>* collegamenti;
-		// l'insieme dei gruppi dello User
-		vector<Gruppo*>* gruppi;
-		// ruolo dell'utente (base, business, executive)
-		string ruolo;
-
 	public:
-		User(string, string, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
-		virtual ~User();
+        enum Ruoli {
+            Base,
+            Buisness,
+            Executive
+        };
 
-		bool operator==(const User&);
+    User(string nick, string password, Ruoli ruolo = Base, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
+    virtual ~User();
 
-		string getNick() const;
-		string getRuolo() const;
+    bool operator==(const User&);
 
-		// gestione collegamenti aggiungi Contatto senza negoziazione (come Twitter)
-		bool insertContatto(Contatto*);
-		bool eraseContatto(Contatto*);
+    string getNick() const;
+    Ruoli getRuolo() const;
 
-		void setGestore(Legami*);
+    // gestione collegamenti aggiungi Contatto senza negoziazione (come Twitter)
+    bool insertContatto(Contatto*);
+    bool eraseContatto(Contatto*);
+
+    void setGestore(Legami*);
+
+private:
+    // nick prende il posto di username e identifica univocamente ogni user
+    string nick, password;
+    // ruolo dell'utente (base, business, executive)
+    Ruoli ruolo;
+
+    Legami *gestore;
+
+    Profilo* profilo;
+    // insieme dei contatti di User
+    vector<Contatto*>* collegamenti;
+    // l'insieme dei gruppi dello User
+    vector<Gruppo*>* gruppi;
 };
 
 #endif
