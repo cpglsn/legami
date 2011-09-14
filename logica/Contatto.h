@@ -6,8 +6,8 @@
 #ifndef CONTATTO_H
 #define CONTATTO_H
 
-#include <string>
 #include "User.h"
+#include <string>
 
 using std::string;
 
@@ -15,12 +15,10 @@ class User;
 
 class Contatto
 {
-	private:
-		User* user;
-		string tag;
-
 	public:
-		Contatto(User*, string);
+		enum Tag {amico, collega, parente};
+
+		Contatto(User*, Tag);
 		virtual ~Contatto();
 
 		bool operator==(const Contatto&);
@@ -29,7 +27,11 @@ class Contatto
 		User* getUser() const;
 
 		// ritorna il tag con cui lo user è stato salvato
-		string getTag() const;
+		Tag getTag() const;
+
+	private:
+		User* user;
+		Tag tag;
 };
 
 #endif

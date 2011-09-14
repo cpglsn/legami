@@ -1,7 +1,7 @@
 #include "Contatto.h"
 
 
-Contatto::Contatto(User* u, string t)
+Contatto::Contatto(User* u, Tag t)
 	: user(u)
     , tag(t)
 {
@@ -24,7 +24,7 @@ User* Contatto::getUser() const
 }
 
 
-string Contatto::getTag() const
+Contatto::Tag Contatto::getTag() const
 {
 	return tag;
 }

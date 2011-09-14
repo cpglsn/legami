@@ -5,14 +5,14 @@
 #include "Legami.h"
 
 
-User::User(string n, string pass, Ruoli ruolo,Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g)
+User::User(string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g)
 	: nick(n)
     , password(pass)
-    , ruolo(ruolo)
     , profilo(p)
     , collegamenti(c)
     , gruppi(g)
     , gestore(0)
+    , ruolo(Base)
 {
 
 }
@@ -21,15 +21,15 @@ User::User(string n, string pass, Ruoli ruolo,Profilo* p, vector<Contatto*>* c, 
 User::~User() {}
 
 
-User::Ruoli User::getRuolo() const
-{
-	return ruolo;
-}
-
-
 bool User::operator==(const User& u)
 {
 	return (nick == u.nick && password == u.password);
+}
+
+
+User::Ruoli User::getRuolo() const
+{
+	return ruolo;
 }
 
 
@@ -95,3 +95,4 @@ void User::setGestore(Legami* l)
 {
 	gestore=l;
 }
+

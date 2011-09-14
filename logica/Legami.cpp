@@ -45,3 +45,4 @@ bool Legami::login(const User& u)
 	// se non c'è un db o il for esce senza return
 	return false;
 }
+

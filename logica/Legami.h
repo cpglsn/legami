@@ -6,21 +6,16 @@
 #ifndef LEGAMI_H
 #define LEGAMI_H
 
-#include <vector>
-#include <string>
 #include "User.h"
 #include "Profilo.h"
+#include <vector>
+#include <string>
 
 using std::vector;
 using std::string;
 
 class Legami
 {
-	private:
-		// il database
-		vector<User*>* database;
-		User* utente;
-
 	public:
 		Legami(string*, User* );
 
@@ -29,6 +24,10 @@ class Legami
 		bool login(const User&);
 		bool cambiaRuolo(User*);
 
+	private:
+		// il database
+		vector<User*>* database;
+		User* utente;
 };
 
 #endif

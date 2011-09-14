@@ -7,9 +7,9 @@
 #ifndef GRUPPO_H
 #define GRUPPO_H
 
+#include "User.h"
 #include <vector>
 #include <string>
-#include "User.h"
 
 using std::string;
 using std::vector;
@@ -18,10 +18,6 @@ class User;
 
 class Gruppo
 {
-	private:
-		string nome, descrizione;
-		vector<User*>* membri;
-
 	public:
 		Gruppo(string, string, vector<User*>*);
 		virtual ~Gruppo();
@@ -40,6 +36,10 @@ class Gruppo
 
 		// cancella uno user dal gruppo
 		void cancella(User*);
+
+	private:
+		string nome, descrizione;
+		vector<User*>* membri;
 };
 
 #endif

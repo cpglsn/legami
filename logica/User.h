@@ -8,9 +8,9 @@
 #ifndef USER_H
 #define USER_H
 
+#include "Contatto.h"
 #include <string>
 #include <vector>
-#include "Contatto.h"
 
 using std::string;
 using std::vector;
@@ -23,39 +23,36 @@ class Legami;
 class User
 {
 	public:
-        enum Ruoli {
-            Base,
-            Buisness,
-            Executive
-        };
+		enum Ruoli {Base,Business,Executive};
 
-    User(string nick, string password, Ruoli ruolo = Base, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
-    virtual ~User();
+		User(string nick, string password, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
+		virtual ~User();
 
-    bool operator==(const User&);
+		bool operator==(const User&);
 
-    string getNick() const;
-    Ruoli getRuolo() const;
+		string getNick() const;
+		Ruoli getRuolo() const;
 
-    // gestione collegamenti aggiungi Contatto senza negoziazione (come Twitter)
-    bool insertContatto(Contatto*);
-    bool eraseContatto(Contatto*);
+		// gestione collegamenti aggiungi Contatto senza negoziazione (come Twitter)
+		bool insertContatto(Contatto*);
+		bool eraseContatto(Contatto*);
 
-    void setGestore(Legami*);
+		void setGestore(Legami*);
 
-private:
-    // nick prende il posto di username e identifica univocamente ogni user
-    string nick, password;
-    // ruolo dell'utente (base, business, executive)
-    Ruoli ruolo;
+	protected:
+		// ruolo dell'utente (base, business, executive)
+		Ruoli ruolo;
 
-    Legami *gestore;
+		// nick prende il posto di username e identifica univocamente ogni user
+		string nick, password;
 
-    Profilo* profilo;
-    // insieme dei contatti di User
-    vector<Contatto*>* collegamenti;
-    // l'insieme dei gruppi dello User
-    vector<Gruppo*>* gruppi;
+		Legami* gestore;
+
+		Profilo* profilo;
+		// insieme dei contatti di User
+		vector<Contatto*>* collegamenti;
+		// l'insieme dei gruppi dello User
+		vector<Gruppo*>* gruppi;
 };
 
 #endif

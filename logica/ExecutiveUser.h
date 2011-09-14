@@ -19,12 +19,12 @@ class Profilo;
 
 class ExecutiveUser : public BusinessUser
 {
-	private:
-		static const unsigned int risultatiMax;
-
 	public:
 		ExecutiveUser(string, string, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
 		virtual ~ExecutiveUser();
+
+	private:
+		static const unsigned int risultatiMax;
 };
 
 #endif

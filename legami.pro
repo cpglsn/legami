@@ -30,3 +30,5 @@ SOURCES += main.cpp \
            logica/User.cpp
 
 FORMS +=   gui/mainwindow.ui
+
+OBJECTS_DIR = obj

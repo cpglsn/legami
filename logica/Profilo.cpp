@@ -72,23 +72,6 @@ void Profilo::setCognome(string s)
 }
 
 
-void Profilo::setAnnoNascita(int a)
-{
-	anno_nascita = a;
-}
-
-
-void Profilo::setMeseNascita(int m)
-{
-	mese_nascita = m;
-}
-
-
-void Profilo::setGiornoNascita(int g)
-{
-	giorno_nascita = g;
-}
-
 void Profilo::setLavPrec(string s)
 {
 	lavoro_precedente = s;
@@ -110,5 +93,23 @@ void Profilo::setTelefono(string s)
 void Profilo::setMail(string s)
 {
 	mail = s;
+}
+
+
+void Profilo::setAnnoNascita(int a)
+{
+	anno_nascita = a;
+}
+
+
+void Profilo::setMeseNascita(int m)
+{
+	mese_nascita = m;
+}
+
+
+void Profilo::setGiornoNascita(int g)
+{
+	giorno_nascita = g;
 }
 
