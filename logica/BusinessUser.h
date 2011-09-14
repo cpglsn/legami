@@ -8,6 +8,11 @@
 #define BUSINESSUSER_H
 
 #include "User.h"
+#include <string>
+#include <vector>
+
+using std::string;
+using std::vector;
 
 class Legami;
 class Profilo;

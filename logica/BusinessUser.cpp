@@ -6,5 +6,5 @@ const int unsigned BusinessUser::risultatiMax = 10;
 
 
 BusinessUser::BusinessUser(string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g)
-	: User(n, pass), User::ruolo("business") {}
+	: User(n, pass, p, c, g) {}
 
