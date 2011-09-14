@@ -53,7 +53,9 @@ bool Legami::login(const User& u)
 
 void Legami::logout()
 {
+	// imposto il gestore dell'utente a 0 in modo da liberarlo
 	utente->setGestore(0);
+	// tolgo il link all'utente (logout)
 	utente = 0;
 }
 
