@@ -80,6 +80,6 @@ bool User::eraseContatto(Contatto* c)
 
 void User::setGestore(Legami* l)
 {
-	gesotre=l;
+	gestore=l;
 }
 

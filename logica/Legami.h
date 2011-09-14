@@ -22,7 +22,7 @@ class Legami
 		User* utente;
 
 	public:
-		Legami(string *, );
+		Legami(string*, User* );
 
 		// gestione utenti
 		bool registra(const User&);
