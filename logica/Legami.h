@@ -22,6 +22,7 @@ class Legami
 		// gestione utenti
 		bool registra(const User&);
 		bool login(const User&);
+		void logout();
 		bool cambiaRuolo(User*);
 
 	private:

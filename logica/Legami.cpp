@@ -38,11 +38,22 @@ bool Legami::login(const User& u)
 		for(unsigned int i=0; i<database->size(); ++i)
 		{
 			if(*(*database)[i] == u)
+			{
+				(*(*database)[i]).setGestore(this);
+				utente = (*database)[i];
 				return true;
+			}
 		}
 	}
 
 	// se non c'è un db o il for esce senza return
 	return false;
+}
+
+
+void Legami::logout()
+{
+	utente->setGestore(0);
+	utente = 0;
 }
 
