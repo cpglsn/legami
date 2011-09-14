@@ -4,8 +4,8 @@
 	un massimo di 700 risultati per ogni ricerca
 */
 
-#ifndef BUSINESSUSER_H
-#define BUSINESSUSER_H
+#ifndef EXECUTIVEUSER_H
+#define EXECUTIVEUSER_H
 
 #include "BusinessUser.h"
 #include <string>
