@@ -2,8 +2,15 @@
 
 
 Contatto::Contatto(User* u, string t)
-	: user(u), tag(t) {}
+	: user(u)
+    , tag(t)
+{
+}
 
+Contatto::~Contatto()
+{
+
+}
 
 bool Contatto::operator==(const Contatto& c)
 {

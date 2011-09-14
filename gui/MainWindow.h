@@ -1,12 +1,22 @@
- #include <QtGui>
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
- int main(int argc, char *argv[])
- {
-     QApplication app(argc, argv);
-     QWidget window;
-     window.resize(320, 240);
-     window.show();
-     window.setWindowTitle(
-         QApplication::translate("toplevel", "Top-level widget"));
-     return app.exec();
- }
+#include <QtGui/QMainWindow>
+
+namespace Ui {
+    class MainWindow;
+}
+
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+public:
+    MainWindow(QWidget *parent = 0);
+    ~MainWindow();
+
+private:
+    Ui::MainWindow *ui;
+};
+
+
+#endif  // MAINWINDOW_H
