@@ -6,5 +6,12 @@ const int unsigned ExecutiveUser::risultatiMax = 700;
 
 
 ExecutiveUser::ExecutiveUser(string n, string pass, Profilo* p, vector<Contatto*>* c, vector<Gruppo*>* g)
-	: BusinessUser(n, pass, p, c, g) {}
+	: BusinessUser(n, pass, p, c, g)
+{
+}
+
+ExecutiveUser::~ExecutiveUser()
+{
+
+}
 

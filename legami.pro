@@ -13,14 +13,17 @@ QT += core \
 HEADERS += gui/MainWindow.h \
            logica/BusinessUser.h \
            logica/Contatto.h \
+           logica/ExecutiveUser.h \
            logica/Gruppo.h \
            logica/Legami.h \
            logica/Profilo.h \
            logica/User.h
 
 SOURCES += main.cpp \
+           gui/MainWindow.cpp \
            logica/BusinessUser.cpp \
            logica/Contatto.cpp \
+           logica/ExecutiveUser.cpp \
            logica/Gruppo.cpp \
            logica/Legami.cpp \
            logica/Profilo.cpp \
