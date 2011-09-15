@@ -7,7 +7,6 @@
 #define LEGAMI_H
 
 #include "User.h"
-#include "Profilo.h"
 #include <vector>
 #include <string>
 
@@ -17,18 +16,20 @@ using std::string;
 class Legami
 {
 	public:
-		Legami(string*, User* );
+		Legami(vector<User*>*, User*);
 
 		// gestione utenti
-		bool registra(const User&);
-		bool login(const User&);
+		bool registra(User*);
+		bool login(string, string);
 		void logout();
 		bool cambiaRuolo(User*);
+
+		vector<User*>* find(Profilo*) const;
 
 	private:
 		// il database
 		vector<User*>* database;
-		User* utente;
+		User* user;
 };
 
 #endif

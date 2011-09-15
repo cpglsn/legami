@@ -19,14 +19,14 @@ class User;
 class Gruppo
 {
 	public:
-		Gruppo(string, string, vector<User*>*);
+		Gruppo(string, string, vector<User*>);
 		virtual ~Gruppo();
 
 		bool operator==(const Gruppo&);
 
 		string getNome() const;
 		string getDescrizione() const;
-		vector<User*>* getMembri() const;
+		vector<User*>* getMembri();          //////////////////////////////////////deve essere costante
 
 		// controlla se uno user appartiene al gruppo
 		bool appartiene(User*) const;
@@ -39,7 +39,7 @@ class Gruppo
 
 	private:
 		string nome, descrizione;
-		vector<User*>* membri;
+		vector<User*> membri;
 };
 
 #endif

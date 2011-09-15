@@ -12,18 +12,10 @@ using std::string;
 class Profilo
 {
 	public:
-		Profilo(string, string, string, string, string, string, int, int, int);
+		Profilo(string="", string="", string="", string="", string="", string="", int=0, int=0, int=0);
 
-/*		string getNome() const;
-		string getCognome() const;
-		string getLavPrec() const;
-		string getLavAtt() const;
-		string getTelefono() const;
-		string getMail() const;
-		int getAnnoNascita() const;
-		int getMeseNascita() const;
-		int getGiornoNascita() const;
-*/
+		bool operator==(const Profilo&);
+
 		void setNome(string);
 		void setCognome(string);
 		void setLavPrec(string);

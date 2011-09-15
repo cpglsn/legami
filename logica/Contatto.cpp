@@ -3,8 +3,9 @@
 
 Contatto::Contatto(User* u, Tag t)
 	: user(u)
-    , tag(t)
+	, tag(t)
 {
+
 }
 
 Contatto::~Contatto()
@@ -28,5 +29,4 @@ Contatto::Tag Contatto::getTag() const
 {
 	return tag;
 }
-
 

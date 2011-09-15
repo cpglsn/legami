@@ -1,17 +1,22 @@
 #include "Legami.h"
 
 
-Legami::Legami(string* database, User* u) {}
+Legami::Legami(vector<User*>* db, User* u)
+	: database(db)
+	, user(u)
+{
+
+}
 
 
-bool Legami::registra(const User& u)
+bool Legami::registra(User* u)
 {
 	if(database)
 	{
-		// se il nick esiste gia ritorno false
 		for(unsigned int i=0; i<database->size(); ++i)
 		{
-			if(*(*database)[i] == u);
+			// se il nick esiste già, ritorno false
+			if(*((*database)[i]) == *u)
 				return false;
 		}
 	}
@@ -19,28 +24,31 @@ bool Legami::registra(const User& u)
 	else
 	{
 		// costruisco da zero la lista utenti
-		database = new vector<User*>;
+		database=new vector<User*>;
 	}
 
-	// costruisco un utente senza profilo e lo aggiungo alla lista
-	// l'utente aggiungerà in seguito i suoi dati modificando il profilo
-	database->push_back(new User(u));
+	// costruisco un user senza profilo e lo aggiungo alla lista
+	// lo user aggiungerà in seguito i suoi dati modificando il profilo
+	database->push_back(u);
 
 	return true;
 }
 
 
-bool Legami::login(const User& u)
+bool Legami::login(string n, string p)
 {
 	if(database)
 	{
-		// se il nick esiste controllo la password
+		// creo un oggetto User temporaneo per il confronto
+		User u(n, p);
+
 		for(unsigned int i=0; i<database->size(); ++i)
 		{
+			// se il nick esiste controllo la password
 			if(*(*database)[i] == u)
 			{
-				(*(*database)[i]).setGestore(this);
-				utente = (*database)[i];
+				(*(*database)[i]).gestore=this;
+				user=(*database)[i];
 				return true;
 			}
 		}
@@ -53,9 +61,26 @@ bool Legami::login(const User& u)
 
 void Legami::logout()
 {
-	// imposto il gestore dell'utente a 0 in modo da liberarlo
-	utente->setGestore(0);
-	// tolgo il link all'utente (logout)
-	utente = 0;
+	// imposto il gestore dello user a 0 in modo da liberarlo
+	user->gestore=0;
+	// tolgo il link allo user (logout)
+	user=0;
+}
+
+
+vector<User*>* Legami::find(Profilo* p) const
+{
+	if(!p || !database) return 0;
+
+	vector<User*>* match;
+
+	for(unsigned int i=0; i<database->size(); ++i)
+	{
+		if(((*database)[i])->profilo==*p)
+			// aggiunge il puntatore allo user con quel profilo
+			match->push_back((*database)[i]);
+	}
+
+	return match;
 }
 

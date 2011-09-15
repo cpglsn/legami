@@ -20,7 +20,7 @@ class Profilo;
 class ExecutiveUser : public BusinessUser
 {
 	public:
-		ExecutiveUser(string, string, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
+		ExecutiveUser(string, string);
 		virtual ~ExecutiveUser();
 
 	private:

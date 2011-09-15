@@ -8,7 +8,7 @@
 #ifndef USER_H
 #define USER_H
 
-#include "Contatto.h"
+#include "Profilo.h"
 #include <string>
 #include <vector>
 
@@ -22,37 +22,35 @@ class Legami;
 
 class User
 {
-	public:
-		enum Ruoli {Base,Business,Executive};
+	// serve alla classe Legami sia per impostare il gestore sia per Legami::find
+	friend class Legami;
 
-		User(string nick, string password, Profilo* =0, vector<Contatto*>* =0, vector<Gruppo*>* =0);
+	public:
+		User(string, string);
 		virtual ~User();
 
 		bool operator==(const User&);
 
+		// ritorna il nick dello user
 		string getNick() const;
-		Ruoli getRuolo() const;
 
 		// gestione collegamenti aggiungi Contatto senza negoziazione (come Twitter)
 		bool insertContatto(Contatto*);
 		bool eraseContatto(Contatto*);
 
-		void setGestore(Legami*);
+		virtual vector<User*>* find(Profilo*) const;
 
 	protected:
-		// ruolo dell'utente (base, business, executive)
-		Ruoli ruolo;
-
 		// nick prende il posto di username e identifica univocamente ogni user
 		string nick, password;
 
 		Legami* gestore;
 
-		Profilo* profilo;
+		Profilo profilo;
 		// insieme dei contatti di User
-		vector<Contatto*>* collegamenti;
+		vector<Contatto*> collegamenti;
 		// l'insieme dei gruppi dello User
-		vector<Gruppo*>* gruppi;
+		vector<Gruppo*> gruppi;
 };
 
 #endif
