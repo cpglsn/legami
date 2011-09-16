@@ -16,7 +16,7 @@ using std::string;
 class Legami
 {
 	public:
-		Legami(vector<User*>*, User*);
+		Legami(vector<User*>*, User* =0);
 
 		// gestione utenti
 		bool registra(User*);
@@ -29,6 +29,7 @@ class Legami
 	private:
 		// il database
 		vector<User*>* database;
+		// collegamento allo user che ha eseguito il login
 		User* user;
 };
 

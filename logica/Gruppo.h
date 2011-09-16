@@ -26,7 +26,7 @@ class Gruppo
 
 		string getNome() const;
 		string getDescrizione() const;
-		vector<User*>* getMembri();          //////////////////////////////////////deve essere costante
+		vector<User*>* getMembri();
 
 		// controlla se uno user appartiene al gruppo
 		bool appartiene(User*) const;

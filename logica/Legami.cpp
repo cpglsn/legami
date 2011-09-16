@@ -76,7 +76,7 @@ vector<User*>* Legami::find(Profilo* p) const
 
 	for(unsigned int i=0; i<database->size(); ++i)
 	{
-		if(((*database)[i])->profilo==*p)
+		if(((*database)[i])->profilo == *p)
 			// aggiunge il puntatore allo user con quel profilo
 			match->push_back((*database)[i]);
 	}
