@@ -95,20 +95,28 @@ void Gruppo::aggiungi(User* user)
 
 
 
-void Gruppo::cancella(User* user)
+bool Gruppo::cancella(User* user)
 {
+	bool sentinella=false;
+
 	if(membri && user)
 	{
 		for(unsigned int i=0; i<membri->size(); ++i)
 		{
 			if( ((*membri)[i])->getNick() == user->getNick())
+			{
 				// chiamo il distruttore di User, non esegue la distruzione profonda
 				membri->erase(membri->begin() + i);
+
+				sentinella=true;
+			}
 		}
 
 		// se il gruppo è vuoto allora lo cancello
 		if(membri->size() == 0)
 			delete this;
 	}
+
+	return sentinella;
 }
 

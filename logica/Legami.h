@@ -27,9 +27,11 @@ class Legami
 		bool registra(User*);
 		bool cancella(User*);
 
+		User** trovaUser(string) const;
+
 		bool login(string, string);
 		void logout();
-		bool cambiaRuolo(User*);
+		void cambiaRuolo(User*, string);
 
 		vector<Gruppo*>* elencoGruppi() const;
 

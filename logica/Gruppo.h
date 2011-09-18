@@ -38,7 +38,7 @@ class Gruppo
 		void aggiungi(User*);
 
 		// cancella uno user dal gruppo
-		void cancella(User*);
+		bool cancella(User*);
 
 	private:
 		// il nome identifica univocamente un gruppo

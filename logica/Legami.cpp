@@ -220,6 +220,23 @@ bool Legami::cancella(User* u)
 
 
 
+User** Legami::trovaUser(string s) const
+{
+	if(database && !database->empty())
+	{
+		for(unsigned int i=0; i<database->size(); ++i)
+		{
+			if( ((*database)[i]->getNick()) == s )
+				// ritorno il puntatore allo user
+				return &((*database)[i]);
+		}
+	}
+
+	return 0;
+}
+
+
+
 bool Legami::login(string n, string p)
 {
 	if(database)
@@ -248,6 +265,73 @@ void Legami::logout()
 	user->gestore=0;
 	// tolgo il link allo user (logout)
 	user=0;
+}
+
+
+
+void Legami::cambiaRuolo(User* u, string r)
+{
+	if(!u)
+		return;
+
+	User* acc=0;
+	User** a = trovaUser(u->getNick());
+
+	if( r=="base" && (u->getRuolo()!="base") )
+	{
+		acc = *a;
+		User* b = new User(**a);
+		*a = b;
+	}
+
+	else if( r=="business" && (u->getRuolo()!="business") )
+	{
+		acc = *a;
+		BusinessUser* b = new BusinessUser(**a);
+		*a = b;
+	}
+
+	else if( r=="executive" && (u->getRuolo()!="executive") )
+	{
+		acc = *a;
+		BusinessUser* b = new BusinessUser(**a);
+		ExecutiveUser* c = new ExecutiveUser(*b);
+		*a = c;
+		::delete b;
+	}
+
+	// modifico anche tutte i riferimenti allo user
+
+	vector<Gruppo*>* gr = elencoGruppi();
+
+	for(unsigned int i=0; i<gr->size(); ++i)
+	{
+		if((*gr)[i]->cancella(acc))
+			// riaggiungo lo user aggiornato
+			(*gr)[i]->aggiungi(*a);
+
+		for(unsigned int i=0; i<database->size(); ++i)
+		{
+			// collegamenti dell'i-esimo user
+			vector<Contatto*>* coll = (*database)[i]->collegamenti;
+
+			for(unsigned int j=0; j<coll->size(); ++j)
+			{
+				Contatto* c = (*coll)[j];
+
+				if(*(c->getUser()) == *acc)
+				{
+					// aggiorno il contatto con lo user aggiornato
+					Contatto* c1 = new Contatto(*a, c->getTag() );
+					coll->erase(coll->begin() + j);
+					delete c;
+					coll->push_back(c1);
+				}
+			}
+		}
+	}
+
+	::delete acc;
 }
 
 
@@ -293,6 +377,10 @@ vector<User*>* Legami::find(Profilo* p, int max) const
 	{
 		if( *(((*database)[i])->profilo) == *p)
 		{
+			// se non c'è il database lo creo
+			if(!match)
+				match=new vector<User*>;
+
 			// aggiunge il puntatore allo user con quel profilo
 			match->push_back((*database)[i]);
 
