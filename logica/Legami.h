@@ -18,7 +18,7 @@ class Legami
 {
 	public:
 		// inizio leggendo il database senza nessuna sessione aperta (nessun utente puntato)
-		Legami(vector<User*>*, User* =0);
+		Legami(vector<User*>* =0, User* =0);
 
 		void leggi(vector<string>*);
 		string scrivi() const;
