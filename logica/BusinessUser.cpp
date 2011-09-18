@@ -36,3 +36,4 @@ vector<User*>* BusinessUser::find(Profilo* p) const
 	// manda il profilo di ricerca al gestore che ritorna sempre un vector<User*>*
 	return gestore->find(p, risultatiMax);
 }
+

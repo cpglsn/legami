@@ -22,7 +22,6 @@ class Legami;
 
 class User
 {
-	// serve alla classe Legami sia per impostare il gestore sia per Legami::find
 	friend class Legami;
 
 	public:

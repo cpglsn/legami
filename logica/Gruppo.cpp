@@ -83,9 +83,9 @@ bool Gruppo::appartiene(User* user) const
 
 void Gruppo::aggiungi(User* user)
 {
-	if(!membri || !user) return;
+	if(!user) return;
 
-	// lo user appartiene già alla lista
+	// lo user appartiene già al vector
 	if(appartiene(user))
 		return;
 
@@ -105,7 +105,7 @@ bool Gruppo::cancella(User* user)
 		{
 			if( ((*membri)[i])->getNick() == user->getNick())
 			{
-				// chiamo il distruttore di User, non esegue la distruzione profonda
+				// non esegue la distruzione profonda, cancello solo il puntatore allo user
 				membri->erase(membri->begin() + i);
 
 				sentinella=true;

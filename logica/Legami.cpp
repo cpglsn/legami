@@ -15,6 +15,24 @@ Legami::Legami(vector<User*>* db, User* u)
 
 
 
+Legami::~Legami()
+{
+	if(database)
+	{
+		int j = database->size();
+		for(int i=0; i<j; ++i)
+			// distruzione profonda sempre del primo elemento visto che man mano li toglie
+			delete database->at(0);
+		// cancella il link al database
+		delete database;
+		database = 0;
+	}
+
+	database=0;
+}
+
+
+
 void Legami::leggi(vector<string>* v)
 {
 	vector<User*>* vu = new vector<User*>;
