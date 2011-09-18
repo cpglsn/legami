@@ -1,3 +1,4 @@
+// Alessandro Capogna 574320
 /*
 	questa classe gestisce tutte le possibili azioni
 	che si possono svolgere all'interno del database

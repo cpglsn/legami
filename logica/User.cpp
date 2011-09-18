@@ -1,3 +1,4 @@
+// Alessandro Capogna 574320
 #include "User.h"
 #include "Contatto.h"
 #include "Legami.h"

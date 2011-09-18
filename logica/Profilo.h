@@ -1,3 +1,4 @@
+// Alessandro Capogna 574320
 /*
 	questa classe gestisce i dati personali dello user
 */

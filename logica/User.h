@@ -1,3 +1,4 @@
+// Alessandro Capogna 574320
 /*
 	questa classe gestisce il login (nick e pass) insieme alla
 	lista dei contatti dello user e alla lista dei gruppi cui

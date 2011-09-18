@@ -1,3 +1,4 @@
+// Alessandro Capogna 574320
 #include "Gruppo.h"
 #include "Xml.h"
 

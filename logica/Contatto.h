@@ -1,3 +1,4 @@
+// Alessandro Capogna 574320
 /*
 	questa classe rappresenta la lista di contatti (link a User e
 	tag per definire in che rapporti si è con lo user)

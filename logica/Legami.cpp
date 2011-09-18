@@ -1,3 +1,4 @@
+// Alessandro Capogna 574320
 #include "Legami.h"
 #include "Xml.h"
 #include "BusinessUser.h"

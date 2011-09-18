@@ -1,3 +1,4 @@
+// Alessandro Capogna 574320
 /*
 	questa classe è l'evoluzione della classe BusinessUser
 	che consente ad ogni BusinessUser di fare ricerche con

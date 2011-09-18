@@ -1,3 +1,4 @@
+// Alessandro Capogna 574320
 /*
 	questa classe definisce i gruppi che hanno un nome, una
 	descrizione e una lista di user iscritti, quando un gruppo
