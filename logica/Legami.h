@@ -33,7 +33,7 @@ class Legami
 
 		vector<Gruppo*>* elencoGruppi() const;
 
-		vector<User*>* find(Profilo*) const;
+		vector<User*>* find(Profilo*, int =0) const;
 
 	private:
 		// il database

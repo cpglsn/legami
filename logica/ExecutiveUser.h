@@ -23,6 +23,10 @@ class ExecutiveUser : public BusinessUser
 		ExecutiveUser(BusinessUser);
 		virtual ~ExecutiveUser();
 
+		virtual string getRuolo() const;
+
+		virtual vector<User*>* find(Profilo*) const;
+
 	private:
 		static const unsigned int risultatiMax;
 };

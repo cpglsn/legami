@@ -1,4 +1,5 @@
 #include "ExecutiveUser.h"
+#include "Legami.h"
 
 
 
@@ -16,4 +17,22 @@ ExecutiveUser::ExecutiveUser(BusinessUser b)
 
 
 ExecutiveUser::~ExecutiveUser() {}
+
+
+
+string ExecutiveUser::getRuolo() const
+{
+	return "executive";
+}
+
+
+
+vector<User*>* ExecutiveUser::find(Profilo* p) const
+{
+	if(!gestore || !p)
+		return 0;
+
+	// manda il profilo di ricerca al gestore che ritorna sempre un vector<User*>*
+	return gestore->find(p, risultatiMax);
+}
 

@@ -16,7 +16,7 @@ class Profilo
 
 		bool operator==(const Profilo&);
 
-		static Profilo* leggi(string s);
+		static Profilo* leggi(string);
 		string scrivi() const;
 
 		void setNome(string);

@@ -281,17 +281,23 @@ vector<Gruppo*>* Legami::elencoGruppi() const
 
 
 
-vector<User*>* Legami::find(Profilo* p) const
+vector<User*>* Legami::find(Profilo* p, int max) const
 {
 	if(!p || !database) return 0;
 
 	vector<User*>* match;
 
-	for(unsigned int i=0; i<database->size(); ++i)
+	int counter;
+
+	for(unsigned int i=0; i<database->size() && counter<=max; ++i)
 	{
 		if( *(((*database)[i])->profilo) == *p)
+		{
 			// aggiunge il puntatore allo user con quel profilo
 			match->push_back((*database)[i]);
+
+			++counter;
+		}
 	}
 
 	return match;

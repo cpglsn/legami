@@ -23,6 +23,10 @@ class BusinessUser : public User
 		BusinessUser(User);
 		virtual ~BusinessUser();
 
+		virtual string getRuolo() const;
+
+		virtual vector<User*>* find(Profilo*) const;
+
 	private:
 		static const unsigned int risultatiMax;
 };
