@@ -7,6 +7,7 @@
 #define LEGAMI_H
 
 #include "User.h"
+#include "Contatto.h"
 #include <vector>
 #include <string>
 
@@ -18,8 +19,12 @@ class Legami
 	public:
 		Legami(vector<User*>*, User* =0);
 
+		void leggi(vector<string>*);
+
 		// gestione utenti
 		bool registra(User*);
+		bool cancella(User*);
+
 		bool login(string, string);
 		void logout();
 		bool cambiaRuolo(User*);

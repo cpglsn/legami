@@ -20,7 +20,7 @@ class Profilo;
 class BusinessUser : public User
 {
 	public:
-		BusinessUser(string, string);
+		BusinessUser(User);
 		virtual ~BusinessUser();
 
 	private:

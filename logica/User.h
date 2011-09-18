@@ -29,14 +29,25 @@ class User
 		User(string, string);
 		virtual ~User();
 
+		static User* leggi(string s);
+		string scrivi() const;
+
+
 		bool operator==(const User&);
 
 		// ritorna il nick dello user
 		string getNick() const;
+		Profilo* getProfilo() const;
+
+		bool checkLogin(string, string) const;
 
 		// gestione collegamenti aggiungi Contatto senza negoziazione (come Twitter)
 		bool insertContatto(Contatto*);
 		bool eraseContatto(Contatto*);
+
+		// gestione gruppi
+		bool insertGruppo(Gruppo*);
+		bool eraseGruppo(Gruppo*);
 
 		virtual vector<User*>* find(Profilo*) const;
 
@@ -46,11 +57,11 @@ class User
 
 		Legami* gestore;
 
-		Profilo profilo;
-		// insieme dei contatti di User
-		vector<Contatto*> collegamenti;
-		// l'insieme dei gruppi dello User
-		vector<Gruppo*> gruppi;
+		Profilo* profilo;
+
+		vector<Contatto*>* collegamenti;
+
+		vector<Gruppo*>* gruppi;
 };
 
 #endif

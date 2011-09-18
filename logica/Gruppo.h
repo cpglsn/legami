@@ -19,7 +19,7 @@ class User;
 class Gruppo
 {
 	public:
-		Gruppo(string, string, vector<User*>);
+		Gruppo(string, string, vector<User*>*);
 		virtual ~Gruppo();
 
 		bool operator==(const Gruppo&);
@@ -38,8 +38,9 @@ class Gruppo
 		void cancella(User*);
 
 	private:
+		// il nome identifica univocamente un gruppo
 		string nome, descrizione;
-		vector<User*> membri;
+		vector<User*>* membri;
 };
 
 #endif

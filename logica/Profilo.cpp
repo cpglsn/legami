@@ -1,4 +1,5 @@
 #include "Profilo.h"
+#include "Xml.h"
 
 
 Profilo::Profilo(string n, string c, string t, string ma, string lp, string la, int a, int m, int g)
@@ -14,6 +15,7 @@ Profilo::Profilo(string n, string c, string t, string ma, string lp, string la, 
 {
 
 }
+
 
 
 bool Profilo::operator==(const Profilo& p)
@@ -32,10 +34,44 @@ bool Profilo::operator==(const Profilo& p)
 }
 
 
+
+Profilo* Profilo::leggi(string s)
+{
+	string n = tag(s, "<nome>", "</nome>");
+	string c = tag(s, "<cognome>", "</cognome>");
+	string t = tag(s, "<telefono>", "</telefono>");
+	string ma = tag(s, "<mail>", "</mail>");
+	string lp = tag(s, "<lav_prec>", "</lav_prec>");
+	string la = tag(s, "<lav_att>", "</lav_att>");
+	int a = string_to_int(tag(s, "<anno>", "</anno>"));
+	int m = string_to_int(tag(s, "<mese>", "</mese>"));
+	int g = string_to_int(tag(s, "<giorno>", "</giorno>"));
+
+	return new Profilo(n, c, t, ma, lp, la, a, m, g);
+}
+
+
+
+string Profilo::scrivi() const
+{
+	return 	"<nome>" + nome + "</nome>" +
+				"<cognome>" + cognome + "</cognome>" +
+				"<telefono>" + telefono + "</telefono>" +
+				"<mail>" + mail + "</mail>" +
+				"<lav_prec>" + lavoro_precedente + "</lav_prec>" +
+				"<lav_att>" + lavoro_attuale + "</lav_att>" +
+				"<anno>" + int_to_string(anno_nascita) + "</anno>" +
+				"<mese>" + int_to_string(mese_nascita) + "</mese>" +
+				"<giorno>" + int_to_string(giorno_nascita) + "</giorno>";
+}
+
+
+
 void Profilo::setNome(string s)
 {
 	nome=s;
 }
+
 
 
 void Profilo::setCognome(string s)
@@ -44,10 +80,12 @@ void Profilo::setCognome(string s)
 }
 
 
+
 void Profilo::setLavPrec(string s)
 {
 	lavoro_precedente=s;
 }
+
 
 
 void Profilo::setLavAtt(string s)
@@ -56,10 +94,12 @@ void Profilo::setLavAtt(string s)
 }
 
 
+
 void Profilo::setTelefono(string s)
 {
 	telefono=s;
 }
+
 
 
 void Profilo::setMail(string s)
@@ -68,16 +108,19 @@ void Profilo::setMail(string s)
 }
 
 
+
 void Profilo::setAnnoNascita(int a)
 {
 	anno_nascita=a;
 }
 
 
+
 void Profilo::setMeseNascita(int m)
 {
 	mese_nascita=m;
 }
+
 
 
 void Profilo::setGiornoNascita(int g)

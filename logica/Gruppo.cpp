@@ -1,7 +1,7 @@
 #include "Gruppo.h"
 
 
-Gruppo::Gruppo(string n, string d, vector<User*> m)
+Gruppo::Gruppo(string n, string d, vector<User*>* m)
 	: nome(n)
 	, descrizione(d)
 	, membri(m)
@@ -10,7 +10,9 @@ Gruppo::Gruppo(string n, string d, vector<User*> m)
 }
 
 
+
 Gruppo::~Gruppo() {}
+
 
 
 bool Gruppo::operator ==(const Gruppo& g)
@@ -19,10 +21,12 @@ bool Gruppo::operator ==(const Gruppo& g)
 }
 
 
+
 string Gruppo::getNome() const
 {
 	return nome;
 }
+
 
 
 string Gruppo::getDescrizione() const
@@ -31,19 +35,21 @@ string Gruppo::getDescrizione() const
 }
 
 
+
 vector<User*>* Gruppo::getMembri()
 {
-	return &membri;
+	return membri;
 }
+
 
 
 bool Gruppo::appartiene(User* user) const
 {
-	if(!membri.empty() && user)
+	if(membri && user)
 	{
-		for(unsigned int i=0; i<membri.size(); ++i)
+		for(unsigned int i=0; i<membri->size(); ++i)
 		{
-			if((membri[i])->getNick() == user->getNick())
+			if( ((*membri)[i])->getNick() == user->getNick())
 				return true;
 		}
 	}
@@ -52,32 +58,34 @@ bool Gruppo::appartiene(User* user) const
 }
 
 
+
 void Gruppo::aggiungi(User* user)
 {
-	if(membri.empty() || !user) return;
+	if(!membri || !user) return;
 
 	// lo user appartiene già alla lista
 	if(appartiene(user))
 		return;
 
-	membri.push_back(user);
+	membri->push_back(user);
 	return;
 }
 
 
+
 void Gruppo::cancella(User* user)
 {
-	if(!membri.empty() && user)
+	if(membri && user)
 	{
-		for(unsigned int i=0; i<membri.size(); ++i)
+		for(unsigned int i=0; i<membri->size(); ++i)
 		{
-			if((membri[i])->getNick() == user->getNick())
+			if( ((*membri)[i])->getNick() == user->getNick())
 				// chiamo il distruttore di User, non esegue la distruzione profonda
-				membri.erase(membri.begin() + i);
+				membri->erase(membri->begin() + i);
 		}
 
 		// se il gruppo è vuoto allora lo cancello
-		if(membri.empty())
+		if(membri->size() == 0)
 			delete this;
 	}
 }

@@ -16,10 +16,7 @@ class User;
 class Contatto
 {
 	public:
-		enum Tag {amico, collega, parente};
-
-		Contatto(User*, Tag);
-		virtual ~Contatto();
+		Contatto(User*, string);
 
 		bool operator==(const Contatto&);
 
@@ -27,11 +24,11 @@ class Contatto
 		User* getUser() const;
 
 		// ritorna il tag con cui lo user è stato salvato
-		Tag getTag() const;
+		string getTag() const;
 
 	private:
 		User* user;
-		Tag tag;
+		string tag;
 };
 
 #endif
