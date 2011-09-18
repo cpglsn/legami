@@ -35,6 +35,8 @@ class Legami
 
 		vector<User*>* find(Profilo*, int =0) const;
 
+        User* getUser(string login);
+
 	private:
 		// il database
 		vector<User*>* database;

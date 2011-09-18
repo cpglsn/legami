@@ -36,6 +36,15 @@ LoginWindow::~LoginWindow()
 void LoginWindow::onAccepted()
 {
     qDebug("accepted");
+    if (m_legami->login(ui->loginLineEdit->text().toStdString(), ui->passwordLineEdit->text().toStdString())) {
+        // create main window with user pointer
+    } else {
+        QMessageBox::critical(this, "Login ERROR!", "Utente inesistente");
+
+        // clear information
+        ui->loginLineEdit->clear();
+        ui->passwordLineEdit->clear();
+    }
 }
 
 void LoginWindow::onCheckboxToggled(bool toggled)
@@ -51,6 +60,10 @@ void LoginWindow::onRegisterClicked()
 
         if (m_legami->registra(&user)) {
             QMessageBox::information(this, "Info", "Account creato");
+
+            // clear information
+            ui->loginLineEdit->clear();
+            ui->passwordLineEdit->clear();
         }
     } else {
         // empty fields, ERROR

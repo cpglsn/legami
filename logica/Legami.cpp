@@ -303,3 +303,18 @@ vector<User*>* Legami::find(Profilo* p, int max) const
 	return match;
 }
 
+User* Legami::getUser(string login)
+{
+    User *user;
+    bool match = false;
+
+    for (int i = 0; i < database->size() && !match; ++i) {
+        if (database->at(i)->getNick() == login) {
+            user = database->at(i);
+            match = true;
+        }
+    }
+
+    return user;
+}
+
