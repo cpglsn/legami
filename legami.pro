@@ -3,12 +3,11 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
+TARGET =
 DEPENDPATH += . gui logica
 INCLUDEPATH += . gui logica
 
-# Input
-HEADERS += gui/MainWindow.h \
+HEADERS += gui/LoginWindow.h \
            logica/BusinessUser.h \
            logica/Contatto.h \
            logica/ExecutiveUser.h \
@@ -19,7 +18,7 @@ HEADERS += gui/MainWindow.h \
            logica/Xml.h
 FORMS += gui/mainwindow.ui
 SOURCES += main.cpp \
-           gui/MainWindow.cpp \
+           gui/LoginWindow.cpp \
            logica/BusinessUser.cpp \
            logica/Contatto.cpp \
            logica/ExecutiveUser.cpp \
@@ -28,3 +27,7 @@ SOURCES += main.cpp \
            logica/Profilo.cpp \
            logica/User.cpp \
            logica/Xml.cpp
+
+FORMS +=   gui/loginwindow.ui
+
+OBJECTS_DIR = obj
