@@ -20,6 +20,37 @@ User::~User() {}
 
 
 
+void User::operator delete(void* p)
+{
+	User* u = static_cast<User*>(p);
+	u->gestore->cancella(u);
+
+	// rimuovo i collegamenti dello user
+	for(unsigned int i=0; i<u->collegamenti->size(); ++i)
+	{
+		delete (u->collegamenti)->at(i);
+		(u->collegamenti)->at(i) = 0;
+	}
+
+	// rimuovo il link ai collegamenti
+	delete u->collegamenti;
+	u->collegamenti = 0;
+
+	// rimuovo lo user dai gruppi cui appartiene
+	for(unsigned int i=0; i<u->gruppi->size(); ++i)
+		(u->gruppi)->at(i)->cancella(u);
+
+	// rimuovo il link ai gruppi
+	delete u->gruppi;
+	u->gruppi = 0;
+
+	// rimuovo il profilo dello user
+	delete u->profilo;
+	u->profilo = 0;
+}
+
+
+
 User* User::leggi(string s)
 {
 	string nick =  tag(s, "<nick>", "</nick>");

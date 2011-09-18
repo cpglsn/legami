@@ -23,8 +23,8 @@ class Legami
 		void leggi(vector<string>*);
 		string scrivi() const;
 
-		// gestione utenti
 		bool registra(User*);
+		// distruzione profonda di uno user account e rimozione da gruppi e contatti
 		bool cancella(User*);
 
 		User** trovaUser(string) const;

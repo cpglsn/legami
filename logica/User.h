@@ -28,6 +28,7 @@ class User
 	public:
 		User(string, string);
 		virtual ~User();
+		void operator delete(void*);
 
 		static User* leggi(string s);
 		string scrivi() const;
