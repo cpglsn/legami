@@ -17,9 +17,11 @@ using std::string;
 class Legami
 {
 	public:
+		// inizio leggendo il database senza nessuna sessione aperta (nessun utente puntato)
 		Legami(vector<User*>*, User* =0);
 
 		void leggi(vector<string>*);
+		string scrivi() const;
 
 		// gestione utenti
 		bool registra(User*);
@@ -28,6 +30,8 @@ class Legami
 		bool login(string, string);
 		void logout();
 		bool cambiaRuolo(User*);
+
+		vector<Gruppo*>* elencoGruppi() const;
 
 		vector<User*>* find(Profilo*) const;
 

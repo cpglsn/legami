@@ -32,8 +32,9 @@ class User
 		static User* leggi(string s);
 		string scrivi() const;
 
-
 		bool operator==(const User&);
+
+		virtual string getRuolo() const;
 
 		// ritorna il nick dello user
 		string getNick() const;

@@ -1,4 +1,6 @@
 #include "Gruppo.h"
+#include "Xml.h"
+
 
 
 Gruppo::Gruppo(string n, string d, vector<User*>* m)
@@ -18,6 +20,26 @@ Gruppo::~Gruppo() {}
 bool Gruppo::operator ==(const Gruppo& g)
 {
     return nome == g.nome;
+}
+
+
+
+bool Gruppo::operator !=(const Gruppo& g)
+{
+    return nome != g.nome;
+}
+
+
+
+string Gruppo::scrivi() const
+{
+	string s = "";
+	s += "<nomeGr>" + nome + "</nomeGr>" + "<descGr>" + descrizione + "</descGr>" + "<numeroMembri>" + int_to_string(membri->size()) + "</numeroMembri>";
+
+	for(unsigned int i=0; i<membri->size(); ++i)
+		s += "<" + int_to_string(i+1) + ">" + ((*membri)[i])->getNick() + "</" + int_to_string(i+1) + ">" ;
+
+	return s;
 }
 
 

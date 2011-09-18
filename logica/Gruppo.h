@@ -23,6 +23,9 @@ class Gruppo
 		virtual ~Gruppo();
 
 		bool operator==(const Gruppo&);
+		bool operator!=(const Gruppo&);
+
+		string scrivi() const;
 
 		string getNome() const;
 		string getDescrizione() const;

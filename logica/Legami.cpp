@@ -122,6 +122,36 @@ void Legami::leggi(vector<string>* v)
 
 
 
+string Legami::scrivi() const
+{
+	if(database && database->size())
+	{
+		string s = "";
+
+		for(unsigned int i=0; i<database->size(); ++i)
+		{
+			s += "<ruolo>";
+			s += ( (*database)[i]->getRuolo() );
+			s += "</ruolo>";
+			s += (*database)[i]->scrivi() + "\n";
+		}
+
+		vector<Gruppo*>* gr = elencoGruppi();
+		s += "<gruppi>";
+		s += "<numeroGr>" + int_to_string(gr->size()) + "</numeroGr>";
+		for(unsigned int i=0; i<gr->size(); ++i)
+			s += "<G" + int_to_string(i+1) + ">" + (*gr)[i]->scrivi() + "</G" + int_to_string(i+1) + ">";
+
+		s += "</gruppi>";
+
+		return s;
+	}
+
+	return "";
+}
+
+
+
 bool Legami::registra(User* u)
 {
 	if(database)
@@ -218,6 +248,35 @@ void Legami::logout()
 	user->gestore=0;
 	// tolgo il link allo user (logout)
 	user=0;
+}
+
+
+
+vector<Gruppo*>* Legami::elencoGruppi() const
+{
+	vector<Gruppo*>* v = new vector<Gruppo*>;
+
+	// aggiungo i gruppi dei vari utenti a v se non sono già presenti
+	for(unsigned int i=0; i<database->size(); ++i)
+	{
+		User* u = (*database)[i];
+		for(unsigned int j=0; j<u->gruppi->size(); ++j)
+		{
+			Gruppo* gr = ((*(u->gruppi))[j]);
+			unsigned int contatore = 0;
+
+			for(unsigned int k=0; k<v->size(); ++k)
+			{
+				// se non ce ne sono di uguali, lo aggiungo
+                if( *((*v)[k]) != *gr )
+						++contatore;
+			}
+
+			if(contatore == v->size())
+				v->push_back(gr);
+		}
+	}
+	return v;
 }
 
 

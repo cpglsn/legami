@@ -43,6 +43,13 @@ bool User::operator==(const User& u)
 
 
 
+string User::getRuolo() const
+{
+	return "base";
+}
+
+
+
 string User::getNick() const
 {
 	return nick;
